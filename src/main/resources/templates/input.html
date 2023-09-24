@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<style>
+		.error {
+			color: red;
+			font-size: 12px;
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+<h2>ユーザー情報登録</h2>
+<form action="#" th:action="@{/user/submit}" th:object="${userForm}" method="post">
+	名前: <input type="text" th:field="*{name}">
+	<br>
+	<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></p>
+	E-mail: <input type="text" th:field="*{email}">
+	<br>
+	<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></p>
+	誕生日(yyyy/MM/dd): <input type="text" th:field="*{birthday}">
+	<br>
+	<p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" class="error"></p>
+	パスワード: <input type="text" th:field="*{password}">
+	<br>
+	<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></p>
+	<input type="submit" value="登録">
+</form>
+</body>
+</html>
